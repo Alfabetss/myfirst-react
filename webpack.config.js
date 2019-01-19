@@ -37,7 +37,7 @@ module.exports = {
             }
           }
         ]
-      }
+      },
     ]
   },
   plugins: [htmlPlugin]
