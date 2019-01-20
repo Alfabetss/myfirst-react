@@ -1,0 +1,39 @@
+.header {
+    height: 75px;
+    border: 1px solid #e0e0e0;
+    background: #191919;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    z-index: 9999;
+    left: 0px;
+}
+
+.container {
+    margin: auto;
+    float: none;
+    width: 100%;
+    color: white;
+    max-width: 1700px;
+    display: flex;
+    line-height: 45px;
+    flex-direction: row;
+}
+
+.logo {
+    flex-grow: 1;
+    padding: 12px;
+    font-size: 16pt;
+    color: gold;
+    cursor: pointer;
+}
+
+.menu-container {
+    flex-grow: 1;
+    padding: 12px;
+}
+
+.search-container {
+    padding: 12px;
+    flex-grow: 50;
+}

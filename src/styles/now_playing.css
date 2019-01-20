@@ -1,0 +1,16 @@
+.main-page {
+    min-height: 100vh;
+    width: 100%;
+    max-width: 1500px;
+    margin: auto;
+    float: none;
+    margin-top: 80px;
+}
+
+.content-page {
+    padding: 12px 0px;
+}
+
+.movie-list-container {
+    margin-top: 12px;
+}
