@@ -11,9 +11,9 @@ import reducers from './duck';
 import thunk from "redux-thunk";
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCheckSquare } from '@fortawesome/free-solid-svg-icons'
+import { faCheckSquare, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faCheckSquare)
+library.add(faCheckSquare, faChevronLeft, faChevronRight)
 
 const store = createStore(reducers, applyMiddleware(thunk));
 

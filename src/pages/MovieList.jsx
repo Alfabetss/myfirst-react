@@ -4,7 +4,7 @@ import { actions } from "../duck";
 import Header from "../components/Header";
 import Pagination from "../components/Pagination";
 import NowPlaying from "../components/NowPlaying";
-import axios from 'axios'; 
+// import axios from 'axios'; 
 
 class MovieList extends React.Component {
     state = {
