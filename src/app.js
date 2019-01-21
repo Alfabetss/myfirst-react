@@ -11,9 +11,9 @@ import reducers from './duck';
 import thunk from "redux-thunk";
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCheckSquare, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { faCheckSquare, faChevronLeft, faChevronRight, faMoneyBillAlt, faClock, faEllipsisH, faPlayCircle } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faCheckSquare, faChevronLeft, faChevronRight)
+library.add(faCheckSquare, faChevronLeft, faChevronRight, faMoneyBillAlt, faClock, faEllipsisH, faPlayCircle)
 
 const store = createStore(reducers, applyMiddleware(thunk));
 
@@ -21,7 +21,7 @@ const App = () => (
   <Provider store={store}>
     <Switch>
       <Route exact path='/:page' component={MovieList}/>
-      <Route path='/movie-detail/:movieID' component={MovieInfo}/>
+      <Route path='/:movieID/:slug' component={MovieInfo}/>
       <Route path='/topup' component={TopUp}/>
       <Route component={MovieList}/>
     </Switch>
