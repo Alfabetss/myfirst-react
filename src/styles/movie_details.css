@@ -86,6 +86,18 @@
     cursor: pointer;
 }
 
+.movie-rating.bought{
+    padding: 4px 8px;
+    background: #fafafa;
+    color: grey;
+    font-weight: bold;
+    display: inline-block;
+    border-radius: 3px;
+    margin: 0px 4px;
+    font-size: 11pt;
+    cursor: pointer;
+}
+
 .icon-container {
     margin: 8px 0px;
 }
@@ -143,7 +155,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.1);
 }
 
 .cast-carousel-container .cast-card .cast-name {
@@ -157,6 +169,56 @@
     text-align: center;
     padding: 16px;
 }
+
+.cast-carousel-container .cast-card.movie {
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    margin: 0px 8px;
+    height: 200px;
+    position: relative;
+    border-radius: 3px;
+    /* background-image: url('https://img1.zergnet.com/3209368_300.jpg'); */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.cast-carousel-container .cast-card.movie .play-button.buy {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    color: white;
+    text-align: center;
+    line-height: 200px;
+    bottom: 0px;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    border: 1px solid gold;
+}
+
+.cast-carousel-container .cast-card.movie .play-button.buy:hover {
+    opacity: 0.9;
+}
+
+.cast-carousel-container .cast-card.movie .play-button.bought {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    color: white;
+    text-align: center;
+    line-height: 200px;
+    bottom: 0px;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid white;
+    opacity: 0;
+}
+
+.cast-carousel-container .cast-card.movie .play-button.bought:hover {
+    opacity: 0.9;
+}
+
 
 .slick-dots li.slick-active button::before {
     color: white !important;
