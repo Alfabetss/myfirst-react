@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import Menu from "./Menu";
 import Search from "./Search";
 import * as utils from "../utils/utils";
 import '../styles/header.css';
+import { Link } from "react-router-dom";
 
 class Header extends Component {
     
@@ -14,7 +14,7 @@ class Header extends Component {
             <div className="header">
                 <div className="container">
                     <div className="logo">
-                        <a href="/">TokoFlix</a>
+                        <Link to="/">TokoFlix</Link>
                     </div>
                     <div className="menu-container">
                         <div className="section">

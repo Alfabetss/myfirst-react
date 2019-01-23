@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Slider from "react-slick";
+
 import Title from "./Title";
 import * as utils from "../utils/utils";
-import "../styles/movie_details.css";
+import "../styles/movie-details.css";
 import "../styles/slick-theme.css";
 import "../styles/slick.css";
 
@@ -21,8 +22,8 @@ class MovieDetail extends Component {
         if (this.props.userData.balance < moviePrice) {
             return alert("Your money is not enough to buy this movie")
         }
-        this.props.updateBalance(this.props.userData.balance - moviePrice)
-        this.props.updateMovie(movie)
+        this.props.purchaseMovie(moviePrice)
+        this.props.addMovieList(movie)
         window.alert("Successful purchased new movie")
     }
 
@@ -42,8 +43,6 @@ class MovieDetail extends Component {
         const casts = this.props.actors
         const similiar = this.props.similiar
         const recommenMovie = this.props.recommenMovie
-        const listMovie = this.props.listMovie
-
         const baseUrl = "http://image.tmdb.org/t/p/original/"
         return (
             <div className="movie-detail-container">
@@ -57,7 +56,7 @@ class MovieDetail extends Component {
                             <div className="movie-title">{movie.title} {movie.release_date ? "("+movie.release_date.split('-')[0]+")" : ''}</div>
                             <div className="movie-rating">IMDb {movie.vote_average}</div>
                             {
-                                utils.existingMovie(listMovie, movie) ? 
+                                utils.existingMovie(this.props.listMovie, movie) ? 
                                     <div className="movie-rating bought" onClick={() => this.hasBought()}>
                                         <FontAwesomeIcon style={{"color": 'grey'}} icon="play-circle"/> Bought
                                     </div> 
@@ -121,7 +120,7 @@ class MovieDetail extends Component {
                                             </span>
                                         </div>    
                                         {
-                                            utils.existingMovie(listMovie, similiarMovie) ? 
+                                            utils.existingMovie(this.props.listMovie, similiarMovie) ? 
                                                 <div className="play-button bought" onClick={() => this.hasBought()}>
                                                     <FontAwesomeIcon style={{"fontSize": '45pt', "color": 'white'}} icon="play-circle"/>
                                                     <div style={{"fontSize": '12pt', "display": "block", "color": "whitesmoke", "lineHeight": "0", "marginTop": "-50px"}}>
@@ -158,7 +157,7 @@ class MovieDetail extends Component {
                                             {recommenMovie.title} {recommenMovie.release_date ? "(" + recommenMovie.release_date.split('-')[0] + ")" : '' }
                                         </div>    
                                         {
-                                            utils.existingMovie(listMovie, recommenMovie) ? 
+                                            utils.existingMovie(this.props.listMovie, recommenMovie) ? 
                                                 <div className="play-button bought" onClick={() => this.hasBought()}>
                                                     <FontAwesomeIcon style={{"fontSize": '45pt', "color": 'white'}} icon="play-circle"/>
                                                     <div style={{"fontSize": '12pt', "display": "block", "color": "whitesmoke", "lineHeight": "0", "marginTop": "-50px"}}>
@@ -190,4 +189,4 @@ class MovieDetail extends Component {
     }
 }
 
-export default MovieDetail;
+export default (MovieDetail);

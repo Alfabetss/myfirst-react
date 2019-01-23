@@ -2,26 +2,29 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { HashRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+// import reducers from './duck';
+import thunk from "redux-thunk";
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCheckSquare, faChevronLeft, faChevronRight, faMoneyBillAlt, faClock, faEllipsisH, faPlayCircle, faUserCircle, faWallet, faStar } from '@fortawesome/free-solid-svg-icons'
+
 import MovieList from './pages/MovieList.jsx';
 import MovieInfo from './pages/MovieInfo.jsx';
 import TopUp from './pages/TopUp.jsx';
+import reducers from './utils/reducer'
 
-import { createStore, applyMiddleware } from 'redux';
-import reducers from './duck';
-import thunk from "redux-thunk";
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCheckSquare, faChevronLeft, faChevronRight, faMoneyBillAlt, faClock, faEllipsisH, faPlayCircle, faUserCircle, faWallet } from '@fortawesome/free-solid-svg-icons'
+library.add(faCheckSquare, faChevronLeft, faChevronRight, faMoneyBillAlt, faClock, faEllipsisH, faPlayCircle, faUserCircle, faWallet, faStar)
 
-library.add(faCheckSquare, faChevronLeft, faChevronRight, faMoneyBillAlt, faClock, faEllipsisH, faPlayCircle, faUserCircle, faWallet)
+// const store = createStore(reducers, applyMiddleware(thunk));
 
-const store = createStore(reducers, applyMiddleware(thunk));
+const store = createStore(reducers)
 
 const App = () => (
   <Provider store={store}>
     <Switch>
-      <Route exact path='/:page' component={MovieList}/>
-      <Route path='/:movieID/:slug' component={MovieInfo}/>
+      <Route path='/?page=:page' component={MovieList}/>
+      <Route exact path='/:movieID' component={MovieInfo}/>
       <Route path='/topup' component={TopUp}/>
       <Route component={MovieList}/>
     </Switch>
