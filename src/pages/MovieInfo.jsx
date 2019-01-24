@@ -8,15 +8,8 @@ class MovieInfo extends React.Component {
 
     constructor(props) {
         super(props);
-        this.updateUserBalanceStateHandler  = this.updateUserBalanceStateHandler.bind(this);
-        this.updateMovieListStateHandler  = this.updateMovieListStateHandler.bind(this);
         this.state = {
             detail_movie: {},
-            user_data: {
-                name: 'Alfabet Setiawan',
-                balance: 100000
-            },
-            list_movie: [],
             actors: {}
         }
         this.apiKey = '5d655c8572a61892be5edb9882fce97f';
@@ -24,7 +17,6 @@ class MovieInfo extends React.Component {
         this.movie_id = null
     }
 
-    
     componentDidMount () {
         this.movie_id = this.props.match.params.movieID.split('-')[0]
         this.fetchMovieDetail()
@@ -33,27 +25,12 @@ class MovieInfo extends React.Component {
         this.fetchRecomendation()
         this.updateState()
     }
-    
-    updateUserBalanceStateHandler = (balance) => {
-        let user_data = {...this.state.user_data}
-        user_data.balance = balance;
-        this.setState({user_data}, function(){
-            console.log('updated balance')
-        });
-    }
+
     updateState = () => {
         if (this.props.location && this.props.location.state) {
             this.setState({user_data: this.props.location.state.userData})
             this.setState({list_movie: this.props.location.state.listMovie})
         }
-    }
-
-    updateMovieListStateHandler = (movie) => {
-        this.setState({
-            list_movie: [...this.state.list_movie, movie]
-          }, function(){
-              console.log('updated movie')
-          })
     }
 
     fetchMovieDetail = () => {

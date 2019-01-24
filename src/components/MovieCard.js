@@ -18,7 +18,7 @@ class MovieCard extends Component {
                         listMovie: this.props.listMovie,
                     }
                 }}>
-                    <div className="card-container" style={{backgroundImage: 'url('+ (movie.poster_path ? baseUrl + movie.poster_path : '/src/styles/no-image.png') +')', cursor: 'pointer'}}>
+                    <div className="card-container" style={{backgroundImage: 'url('+ (movie.poster_path ? baseUrl + movie.poster_path : '/src/styles/no-image-available.png') +')', cursor: 'pointer'}}>
                         <div className="icon">
                         {
                             utils.existingMovie(this.props.listMovie, movie) ? 

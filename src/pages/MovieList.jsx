@@ -1,22 +1,35 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { actions } from "../duck";
 import axios from 'axios'; 
+import Pagination from 'pagination-component';
+import { css } from 'glamor';
 import Header from "../components/Header";
-import Pagination from "../components/Pagination";
 import NowPlaying from "../components/NowPlaying";
 
+const pageLink = css({
+    margin: '2px',
+    display: 'inline-block',
+    padding: '2px',
+    WebkitBorderRadius: '20px',
+    MozBorderRadius: '20px',
+    borderRadius: '3px',
+    padding: '12px',
+})
+  
+const currentLink = css({
+    backgroundColor: '#0074c2',
+    display: 'inline-block',
+    color: '#FFFFFF',
+    'a:link': { color: '#FFFFFF' },
+    'a:visited': { color: '#FFFFFF' },
+    'a:active': { color: '#FFFFFF' }
+})
 class MovieList extends React.Component {
     
     constructor(props) {
         super(props);
         this.setCurrentPage  = this.setCurrentPage.bind(this);
         this.state = {
-            user_data: {
-                name: 'Alfabet Setiawan',
-                balance: 1000000
-            },
-            list_movie: [],
             currentPage: 1,
             now_playing: []
         }
@@ -37,10 +50,12 @@ class MovieList extends React.Component {
     }
 
     setCurrentPage(page) {
-        console.log(this.props.match);
-        this.setState({currentPage: page});
+        this.setState({currentPage: page}, function() {
+            this.fetchNowPlaying()
+            this.props.history.push(`/?page=${page}`)
+        });
     }
-
+    
     render() {
         const userData = this.props.userData
         const nowPlaying = this.state.now_playing
@@ -49,7 +64,15 @@ class MovieList extends React.Component {
             <div>
                 <Header userData={userData}></Header> 
                 <NowPlaying userData={userData} listMovie={listMovie} nowPlaying={nowPlaying}></NowPlaying>
-                <Pagination></Pagination>
+                <div className="pagination-container">
+                    <Pagination currentPage={this.state.currentPage - 1 }
+                        pageCount={this.state.now_playing ? this.state.now_playing.total_pages : 1}
+                        pageLinkClassName={pageLink}
+                        currentLinkClassName={currentLink}
+                        onPageClick={i => {
+                            this.setCurrentPage(i+1)
+                    }}/>
+                </div>
             </div>
         )
     }

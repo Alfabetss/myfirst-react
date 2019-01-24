@@ -6,15 +6,15 @@ import { createStore, applyMiddleware } from 'redux';
 // import reducers from './duck';
 import thunk from "redux-thunk";
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCheckSquare, faChevronLeft, faChevronRight, faMoneyBillAlt, faClock, faEllipsisH, faPlayCircle, faUserCircle, faWallet, faStar } from '@fortawesome/free-solid-svg-icons'
+import { faCheckSquare, faChevronLeft, faChevronRight, faMoneyBillAlt, faClock, faEllipsisH, faPlayCircle, faUserCircle, faWallet, faStar, faFilm, faSearch } from '@fortawesome/free-solid-svg-icons'
 
 import MovieList from './pages/MovieList.jsx';
 import MovieInfo from './pages/MovieInfo.jsx';
-import TopUp from './pages/TopUp.jsx';
+import MovieHistory from './pages/MovieHistory.jsx';
 import reducers from './utils/reducer'
 
 
-library.add(faCheckSquare, faChevronLeft, faChevronRight, faMoneyBillAlt, faClock, faEllipsisH, faPlayCircle, faUserCircle, faWallet, faStar)
+library.add(faCheckSquare, faChevronLeft, faChevronRight, faMoneyBillAlt, faClock, faEllipsisH, faPlayCircle, faUserCircle, faWallet, faStar, faFilm, faSearch)
 
 // const store = createStore(reducers, applyMiddleware(thunk));
 
@@ -23,9 +23,9 @@ const store = createStore(reducers)
 const App = () => (
   <Provider store={store}>
     <Switch>
-      <Route path='/?page=:page' component={MovieList}/>
+      <Route path='/?page=:params' component={MovieList}/>
       <Route exact path='/:movieID' component={MovieInfo}/>
-      <Route path='/topup' component={TopUp}/>
+      <Route exact path='/movie/history' component={MovieHistory}/>
       <Route component={MovieList}/>
     </Switch>
   </Provider>

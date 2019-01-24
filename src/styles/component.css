@@ -89,3 +89,28 @@
     background: linear-gradient(to top right, #202b3d, black);
     z-index: 0;
 }
+
+.pagination-container {
+    max-width: 1000px;
+    text-align: center;
+    display: inline;
+    padding: 12px;
+}
+
+.pageLink {
+    margin: 6px;
+    display: inline-block;
+    padding: 2px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+  }
+
+  .currentLink {
+    background-color: #0074c2;
+    color: #FFFFFF;
+  }
+  
+  .currentLink a:link { color: #FFFFFF; }
+  .currentLink a:visited { color: #FFFFFF; }
+  .currentLink a:active { color: #FFFFFF; }

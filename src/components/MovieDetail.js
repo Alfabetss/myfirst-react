@@ -12,8 +12,6 @@ import "../styles/slick.css";
 class MovieDetail extends Component {
 
     purchaseHandler(movie) {
-        // const updateUserBalance = this.props.updateBalance;
-        // const updateMovieList = this.props.updateMovie;
         const moviePrice = utils.priceHandler(movie.vote_average)
         const x = window.confirm('You Will buy ' + movie.title + ' for Rp.' + new Intl.NumberFormat('ID').format(moviePrice) + " ?")
         if (!x) {
@@ -39,7 +37,7 @@ class MovieDetail extends Component {
             slidesToScroll: 5,
             lazyLoad: true
         }
-        const movie = this.props.movie
+        const movie = this.props ? this.props.movie : null
         const casts = this.props.actors
         const similiar = this.props.similiar
         const recommenMovie = this.props.recommenMovie
@@ -76,7 +74,7 @@ class MovieDetail extends Component {
                                     <FontAwesomeIcon  icon="ellipsis-h"/> {
                                             (movie.genres && movie.genres.length > 0) ? movie.genres.slice(0,3).map((genre, index) => 
                                                 <span key={index}>{genre.name + (index != movie.genres.length - 1 ? ' | ' : '') }</span>
-                                            ) : <div>Genres Not Found</div>
+                                            ) : <div></div>
                                         }
                                 </div>
                             </div>

@@ -18,6 +18,8 @@
     box-sizing: border-box;
     margin-top: 4px;
     color: white;
+    text-align: right;
+    position: relative;
 }
 
 input, select {
@@ -31,16 +33,18 @@ input, select {
     border-radius: 0px;
     margin: 2px 4px;
     margin-top: 2px;
+    margin-right: 60px
 }
 
 .button-search {
-    padding: 0px 8px;
+    position: absolute;
+    top: 4px;
+    right: 0px;
     margin: 0px 4px;
-    border: 1px solid #e0e0e0;
-    color: whitesmoke;
-    font-size: 12pt;
-    border-radius: 3px;
-    display: inline-block;
+    padding: 0px 17px;
+    background: black;
     cursor: pointer;
-    background: rgba(255,255,255,.08);
+    border: 1px solid #fafafa;
+    height: 35px;
+    line-height: 35px;
 }
