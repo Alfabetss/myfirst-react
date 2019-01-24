@@ -9,6 +9,7 @@ this project create from scratch and follow this tutorial:
     - for the router im using basic react-router-dom
 
 How to install:
+
     - clone repository
     - install nodejs (https://nodejs.org/en/download/)
     - npm install 
